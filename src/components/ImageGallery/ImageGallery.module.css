@@ -1,0 +1,12 @@
+.ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.li {
+  flex: 1 1 calc((100% - 15px * 3) / 4);
+  height: 30vh;
+  object-fit: cover;
+}
