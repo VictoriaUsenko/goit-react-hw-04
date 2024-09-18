@@ -85,7 +85,7 @@ export default function App() {
       )}
       {loading && (
         <MutatingDotsLoader
-          visible={loading}
+          visible={true}
           height="130"
           width="130"
           color="#6d32f5"
