@@ -72,6 +72,10 @@ export default function App() {
     setShowModal({ isOpen: false, photo: null });
   };
 
+  const handleLoadMoreClick = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
   return (
     <>
       <SearchBar onSubmit={updateQuery} />
@@ -79,19 +83,24 @@ export default function App() {
       {photos.length > 0 && !error && (
         <ImageGallery photos={photos} onOpen={openImage} />
       )}
-      <MutatingDotsLoader
-        visible={loading}
-        height="130"
-        width="130"
-        color="#6d32f5"
-        secondaryColor="#ee20f6"
-        radius="15"
-        ariaLabel="mutating-dots-loading"
-        wrapperStyle={{}}
-        wrapperClass="load-wrapper"
-      />
+      {loading && (
+        <MutatingDotsLoader
+          visible={loading}
+          height="130"
+          width="130"
+          color="#6d32f5"
+          secondaryColor="#ee20f6"
+          radius="15"
+          ariaLabel="mutating-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass="load-wrapper"
+        />
+      )}
       {photos.length > 0 && !error && (
-        <LoadMoreBtn onLoading={loading} setPage={setPage} />
+        <LoadMoreBtn
+          onLoading={loading}
+          handleLoadMoreClick={handleLoadMoreClick}
+        />
       )}
       <Toaster />
       <ImageModal showModal={showModal} closeModal={closeImage} />
